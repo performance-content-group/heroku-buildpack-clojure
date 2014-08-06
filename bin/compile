@@ -157,7 +157,7 @@ fi
 PATH=.lein/bin:$PATH JVM_OPTS="-Xmx600m" \
   LEIN_JVM_OPTS="-Xmx400m -Duser.home=$BUILD_DIR" \
   lein cljsbuild once production
-if [ "${PIPESTATUS[*]}" != "0 0" ]; then
+if [ $? != 0 ]; then
   echo " !     Failed to compile ClojureScript. Exiting."
   exit 1
 fi
